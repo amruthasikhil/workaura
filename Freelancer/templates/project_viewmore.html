@@ -1,0 +1,67 @@
+<!-- templates/add_service.html -->
+<!DOCTYPE html>
+{% extends "userdashboard.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Service</title>
+    <!-- Optional: Add CSS or Bootstrap for styling -->
+</head>
+<body>
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-header  text-white" >
+                    <h3 class="mt-2"><u> {{ project.title }}</u>  </h3>
+                </div>
+                <div class="card-body px-3" >
+                    <table class="table table-bordered mt-2" style="background-color: rgb(243, 247, 251);">
+                        <tbody>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ project.description }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <th>Budget Amount</th>
+                                <td>${{ project.budget_amount }}</td>
+                            </tr>
+                            <tr>
+                                <th>Category</th>
+                                <td>{{ subcat.subcategory_name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Required Skills</th>
+                                <td>{{ project.required_skills }}</td>
+                            </tr>
+                            <tr>
+                                <th>Deadline</th>
+                                <td>{{ project.deadline }}</td>
+                            </tr>
+                            
+                            <tr>
+                                <th>Posted at</th>
+                                <td>{{ project.created_at }}</td>
+                            </tr>
+                            {% if project.attachments %}
+                            <tr>
+                                <th>Attachment</th>
+                                <td><a href="{{ project.attachments.url }}" download>Download File</a></td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                    
+                </div>
+                <div class="card-footer">
+                    <a href="/" class="btn btn-secondary">Back</a>
+                    <a href="{% url 'sendingproject_proposal' pid=project.id %}" class="btn btn-primary">Send a proposal</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{%  endblock %}

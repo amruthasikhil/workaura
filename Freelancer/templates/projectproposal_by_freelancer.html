@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% extends "userdashboard.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="card-block">
+        <div class="row">
+            <div class="col-8">
+                <div class="container ">
+                    <div class="card px-4 py-4">
+                        <form action="{% url 'freelancersend_projectproposal' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                    
+                            <table class="table table-bordered ">
+                                <tr class="table-primary">
+                                    <td><strong>Cover Letter:</strong></td>
+                                    <td><textarea name="cover_letter" rows="5" class="form-control" id="cover_letter"></textarea></td>
+                                </tr>
+                            
+                                <tr class="table-secondary">
+                                    <td><strong>Proposed Budget:</strong></td>
+                                    <td><input type="text" class="form-control" name="proposed_budget" id="proposed_budget"></td>
+                                </tr>
+                            
+                                <tr class="table-primary">
+                                    <td><strong>Estimated Time:</strong></td>
+                                    <td><input type="text" class="form-control" name="estimated_time" id="estimated_time"></td>
+                                </tr>
+                            
+                                <tr class="table-secondary">
+                                    <td><strong>Additional Notes:</strong></td>
+                                    <td><textarea class="form-control" rows="5" name="additional_notes" id="additional_notes"></textarea></td>
+                                </tr>
+                            
+                                <tr>
+                                    <td colspan="2" class="text-center p-3">
+                                        <button type="submit" class="btn btn-primary">Submit Proposal</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </form>
+                    </div>
+                    
+                    </div>
+            </div>
+
+            <div class="col-4">
+                <div class="container bg-light py-5">
+                    
+                    <ul>
+                        <li style="list-style-type: none;"><h4>Project Proposal Submission Rules</h4></li>
+                        <li>Ensure all fields are filled out accurately.</li>
+                        <li>Provide a detailed and professional cover letter.</li>
+                        <li>Your proposed budget should be realistic and competitive.</li>
+                        <li>Mention the estimated time required to complete the project.</li>
+                        <li>Additional notes should include any unique skills or approaches.</li>
+                        <li>Once submitted, proposals cannot be edited.</li>
+                        <li>Only one proposal per project is allowed per freelancer.</li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+    
+
+</body>
+</html>
+{% endblock %}

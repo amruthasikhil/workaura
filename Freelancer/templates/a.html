@@ -1,0 +1,83 @@
+<div class="col-lg-8 col-xlg-9 col-md-7">
+    <div class="card">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs profile-tab" role="tablist">
+            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#home" role="tab" aria-expanded="false">Activity</a> </li>
+            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab" aria-expanded="true">Profile</a> </li>
+            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab" aria-expanded="false">Settings</a> </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane" id="home" role="tabpanel" aria-expanded="false">
+                <div class="card-block">
+                    <div class="profiletimeline">
+                      
+                        {% for i in data %}
+                        <div class="sl-item">
+                            <div class="sl-left"><a href="{% url 'freelancer_view_clients_list' clid=i.lid  %}" class="link"><img src="{{i.pic.url}}" alt="user" class="img-circle"></a> </div>
+                            <div class="sl-right">
+                                <div><b>{{i.name}}</b>  </a> <span class="sl-date">Posted On:  {{i.date}}</span>
+                                    <p class="m-t-10"><b>{{i.title}} </b></p>
+                                    <p>{{i.descp}} </p>
+                                </div>
+                                <div class="like-comm">
+                                    <a href="{%  url 'projectlike' pid=i.id %}" class="link m-r-10"><i class="fa fa-heart text-danger"></i> {{i.like}}</a> 
+                                    <a href="{%  url 'projectlike' pid=i.id %}" class="link m-r-10"><i class="mdi mdi-bookmark text-primary"></i> </a> 
+
+                                </div> 
+                                <div class="like-comm m-t-20"> <a href="{% url 'freelancer_view_newprojects_more' prjtid=i.id %}" style="color: white;background-color: blue;border-radius: 5px;" class="py-2 px-2 link m-r-10" >View more</a> </div>
+                            </div>
+                        </div>
+                        <hr>
+                        {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--second tab-->
+
+
+
+            <div class="tab-pane active" id="profile" role="tabpanel" aria-expanded="true">
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
+                            <br>
+                            <p class="text-muted">Johnathan Deo</p>
+                        </div>
+                       
+                    </div>
+                    <hr>
+                    <div class="progress">
+                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="tab-pane" id="settings" role="tabpanel" aria-expanded="false">
+                <div class="card-block">
+                    <form class="form-horizontal form-material">
+                        <div class="form-group">
+                            <label class="col-md-12">Full Name</label>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
+                            </div>
+                        </div>
+                      
+                       
+                       
+                      
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <button class="btn btn-success">Update Profile</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

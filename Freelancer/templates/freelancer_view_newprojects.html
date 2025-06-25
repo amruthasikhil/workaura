@@ -1,0 +1,119 @@
+<!-- templates/add_service.html -->
+<!DOCTYPE html>
+{% extends "userdashboard.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Service</title>
+    <!-- Optional: Add CSS or Bootstrap for styling -->
+</head>
+<body>
+     <form  method="post" action="{%  url 'freelancer_view_newprojects_search' %}">
+        {%  csrf_token %}
+    <div class="col-lg-12 col-xlg-9 col-md-8 d-flex justify-content-end mb-3">
+        <div class="d-flex  gap-2">
+
+            <input type="text" name="search" class="form-control mx-2" placeholder="Search New project">
+            <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Search Now</button>
+       
+        </div>
+    </div>
+</form>
+
+    <div class="col-lg-12 col-xlg-9 col-md-7">
+        <div class="card">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs profile-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">New Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Saved Projects</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a>
+                </li> -->
+            </ul>
+            
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="home" role="tabpanel">
+                <div class="card-block">
+                    <div class="profiletimeline">
+
+                        
+                        {% for i in data %}
+                        <div class="sl-item">
+                            <div class="sl-left"><a href="{% url 'freelancer_view_clients_list' clid=i.lid  %}" class="link"><img src="{{i.pic.url}}" alt="user" class="img-circle"></a> </div>
+                            <div class="sl-right">
+                                <div><b>{{i.name}}</b>  </a> <span class="sl-date">Posted On:  {{i.date}}</span>
+                                    <p class="m-t-10 py-2 px-2" style="background-color: aliceblue;color: black;font-weight: 200;"><b>{{i.title}} </b></p>
+                                    <p>{{i.descp}} </p>
+                                </div>
+                                <div class="like-comm">
+                                    <a href="{%  url 'projectlike' pid=i.id %}" class="link m-r-10"><i class="fa fa-heart text-danger"></i> {{i.like}}</a> 
+                                    <a href="{%  url 'projectsave' pid=i.id %}" class="link m-r-10"><i class="mdi mdi-bookmark text-primary"></i> 
+                                     {{i.sts}}
+                                        
+                                        {% if i.sts == "saved" %}
+                                        <p>Saved</p>
+                                        {% else %}
+                                        <p>...</p>
+                                        {% endif %}
+                                    </a> 
+
+                                </div> 
+                                <div class="like-comm m-t-20"> <a href="{% url 'freelancer_view_newprojects_more' prjtid=i.id %}" style="color: white;background-color: blue;border-radius: 5px;" class="py-2 px-2 link m-r-10" >View more</a> </div>
+                            </div>
+                        </div>
+                        <hr>
+                        {% endfor %}
+                       
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+                <div class="tab-pane" id="profile" role="tabpanel">
+                    <div class="card-block">
+                        <div class="profiletimeline">
+    
+                            
+                            {% for j in newarr2 %}
+                            <div class="sl-item">
+                                <div class="sl-left"><a href="{% url 'freelancer_view_clients_list' clid=j.lid  %}" class="link"><img src="{{j.pic.url}}" alt="user" class="img-circle"></a> </div>
+                                <div class="sl-right">
+                                    <div><b>{{j.name}}</b>  </a> <span class="sl-date">Posted On:  {{j.date}}</span>
+                                        <p class="m-t-10 py-2 px-2" style="background-color: aliceblue;color: black;font-weight: 200;"><b>{{j.title}} </b></p>
+                                        <p>{{j.descp}} </p>
+                                    </div>
+                                  
+                                    <div class="like-comm m-t-20"> <a href="{% url 'freelancer_view_newprojects_more' prjtid=j.id %}" style="color: white;background-color: blue;border-radius: 5px;" class="py-2 px-2 link m-r-10" >View more</a> </div>
+                                </div>
+                            </div>
+                            <hr>
+                            {% endfor %}
+                           
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="tab-pane" id="settings" role="tabpanel">Content for Settings</div> -->
+            </div>
+            
+            <!-- Tab panes -->
+           
+        </div>
+    </div>
+<!-- Add this inside your <head> or before </body> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+
+</body>
+</html>
+{%  endblock %}

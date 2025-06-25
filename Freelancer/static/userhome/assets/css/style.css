@@ -1,0 +1,293 @@
+#container-fluid1 {
+    position: relative;
+    background-image: url('assets\img\pexels-tima-miroshnichenko-5439371.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    z-index: 1;
+}
+
+#container-fluid2{
+ background-color: #fff;
+}
+
+#container-fluid3{
+  background-color: #fff;
+ }
+
+#container-fluid4{
+  background-color: #fbfbfb;
+  background-image: url('assets/img/ooorganize\ \(4\).svg');
+ }
+
+ #container-fluid4-a{
+  background-color: #f0eeee;
+ }
+ #container-fluid5{
+  background-color: #fff;
+ }
+
+
+ #container-fluid6{
+  background-color: rgba(36, 36, 58, 0.9); /* Dark blue overlay */
+}
+#container-fluid8{
+  background-color: #fff;
+
+}
+
+nav li a{
+
+  font-size: 20px;
+}
+
+#container-fluid1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(36, 36, 58, 0.9); /* Dark blue overlay */
+    z-index: -1;
+}
+
+#headline{
+    font-size: 60px;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+
+#headline6{
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: regular;
+}
+
+.custom-hr2 {
+  width: 85%;
+  border: 3px solid #ffffff;
+  margin-left: 20px; /* Adjusts the space between the card and the hr */
+  margin-right: 20px; /* Adjusts the space between the card and the hr */
+
+  align-self: center; /* Aligns the hr line vertically with the card */
+}
+
+#headline2{
+  font-size: 34px;
+  display: block;
+  
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+#headline5{
+  font-size: 34px;
+  display: block;
+  
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+
+#headline6{
+  font-size: 15px;
+
+  
+  font-family: Arial, Helvetica, sans-serif;
+ 
+}
+
+
+#headline_section3{
+  font-size: 35px;
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.custom-search {
+  position: relative;
+  width: auto;
+}
+.custom-search-input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 100px;
+  padding: 10px 100px 10px 20px; 
+  line-height: 1;
+  box-sizing: border-box;
+  outline: none;
+}
+.custom-search-botton {
+  position: absolute;
+  right: 3px; 
+  top: 3px;
+  bottom: 3px;
+  border: 0;
+  background: #0D6CF9;
+  color: #fff;
+  outline: none;
+  margin: 0;
+  padding: 0 10px;
+  border-radius: 100px;
+  z-index: 2;
+}
+.btn{
+  border-radius: 10px;
+  padding: 8px;
+  margin: 5px;
+  border: 1px;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+
+}
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.logos {
+  overflow: hidden;
+  background: white;
+  white-space: nowrap;
+  position: relative;
+}
+
+.logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+ 
+  height: 10%;
+  content: "";
+  z-index: 2;
+}
+
+.logos:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+}
+
+.logos:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+}
+
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+.logos-slide {
+  display: inline-block;
+  animation: 35s slide infinite linear;
+}
+
+.logos-slide img {
+  height: 100px;
+  margin: 0 40px;
+}
+
+#create-button:hover {
+  transform: scale(1.2);
+  color: white;
+  background-color: rgb(75, 30, 95);
+}
+
+#bookmarks:hover {
+  transform: scale(1.2);
+  color: rgb(14, 218, 71);
+}
+
+
+
+#buttonfor-apply:hover{
+  transform: scale(0.9);
+  color: white;
+  background-color: #0D6CF9;
+}
+
+
+#readmorebutton:hover{
+  transform: scale(1.2);
+  color:#0D6CF9;
+  background-color: white;
+}
+
+
+#buttonread:hover{
+  transform: scale(0.9);
+  color:#0D6CF9;
+
+  background-color: white;
+}
+
+#card01:hover {
+  transform: scale(0.9);
+  color: white;
+  background-color: #0D6CF9;
+}
+
+#card02:hover {
+  transform: scale(0.9);
+  color: white;
+  background-color: #0D6CF9;
+}
+
+#card03:hover {
+  transform: scale(0.9);
+  color: white;
+  background-color: #0D6CF9;
+}
+/* #waviy {
+  position: relative;
+}
+#waviy #headline {
+  position: relative;
+  display: inline-block;
+  font-size: 80px;
+  color: #fff;
+  animation: flip 10s infinite;
+  animation-delay: calc(.2s * var(--i))
+}
+@keyframes flip {
+  0%,80% {
+    transform: rotateY(360deg) 
+  }
+} */
+
+
+
+.ml11 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+}
+
+.ml11 .line {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background-color: #fff;
+  transform-origin: 0 50%;
+}
+
+.ml11 .line1 { 
+  top: 0; 
+  left: 0;
+}
+
+.ml11 .letter {
+  display: inline-block;
+  line-height: 1em;
+}

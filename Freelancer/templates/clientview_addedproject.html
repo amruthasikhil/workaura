@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% extends "clientdashboard.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+
+    <!-- <div class="container">
+        <h2 class="text-start mb-4">My Posted Projects</h2>
+
+        {% if projects %}
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Project Title</th>
+                            <th>Budget</th>
+                            <th>Category</th>
+                            <th>Deadline</th>
+                            <th>Visibility</th>
+                            <th>Proposals</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for project in projects %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ project.title }}</td>
+                            <td>${{ project.budget_amount }}</td>
+                            <td>{{ project.category }}</td>
+                            <td>{{ project.deadline }}</td>
+                            <td>{{ project.visibility}}</td>
+                            <td><a href="#" class="btn btn-info btn-sm">View Proposals</a></td>
+                            <td>
+                                <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="text-start text-muted">No projects posted yet.</p>
+        {% endif %}
+
+        <div class="text-start mt-4">
+            <a href="#" class="btn btn-success">Post a New Project</a>
+        </div>
+    </div> -->
+
+    <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+        <div class="w-full overflow-x-auto">
+            <table class="w-full whitespace-no-wrap">
+                <thead>
+                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                        <th>Sl no.</th>
+                        <th class="px-4 py-3">Project Title</th>
+                        <th class="px-4 py-3">Budget</th>
+                        <th class="px-4 py-3">Category</th>
+                        <th class="px-4 py-3">Deadline</th>
+                        <th class="px-4 py-3">Proposals</th>
+                        <th class="px-4 py-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                    {% for project in projects %}
+                    <tr class="text-gray-700 dark:text-gray-400">
+                        <td class="px-4 py-3 text-sm">
+                            {{forloop.counter}}
+                        </td>
+                        <td class="px-4 py-3">
+                            <div class="text-sm">
+                                <p class="font-semibold">{{ project.title }}</p>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">{{ project.description|truncatewords:10 }}</p>
+                            </div>
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                            ${{ project.budget_amount }}
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                            {{ project.category }}
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                            {{ project.deadline }}
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                            <a href="#" class="text-blue-500 hover:underline">View Proposals</a>
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                            <a href="#" class="px-2 py-1 text-blue-600 hover:underline">Edit</a> | 
+                            <a href="#" class="px-2 py-1 text-red-600 hover:underline">Delete</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="px-4 py-3 text-center text-gray-500 dark:text-gray-400">
+                            No projects posted yet.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+
+</div>
+    
+
+
+    </body>
+    </html>
+    {%  endblock %}

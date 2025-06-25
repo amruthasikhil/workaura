@@ -1,0 +1,75 @@
+<!-- templates/add_service.html -->
+<!DOCTYPE html>
+{% extends "userdashboard.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Service</title>
+    <!-- Optional: Add CSS or Bootstrap for styling -->
+</head>
+<body>
+    <div class="container">
+     <!-- Registration 2 - Bootstrap Brain Component -->
+
+    
+        <div class="col-12 col-md-11 col-lg-12 col-xl-12 col-xxl-12">
+        
+            <div class="row">
+              <div class="col-12">
+                <div class="mb-5">
+                  <h2 class="h5">Add Service</h2>
+                  <h6 class="fs-6 fw-normal text-secondary m-0">Add Your Services Below</h3>
+                </div>
+              </div>
+            </div>
+            <form action="{% url 'addservicespost' %}" method="POST">
+              {% csrf_token %}
+              <div class="row gy-3 gy-md-4 overflow-hidden">
+                <div class="col-12 mb-2">
+                  <label for="firstName" class="form-label">Title <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="title" id="firstName" placeholder="Title" required>
+                </div>
+                <div class="col-12 mb-4">
+                    <label for="lastName" class="form-label">Price (per hour) <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="price" id="lastName" placeholder="Price" required>
+                </div>
+                <div class="col-12 mb-4">
+                    <label for="email" class="form-label">Category <span class="text-danger">*</span></label>
+                  <select name="category" id="" class="form-control">
+                    {% for i in data %}
+                    <option value="{{i.id}}">{{i.subcategory_name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-12 mb-4">
+                    <label for="password" class="form-label">Description <span class="text-danger">*</span></label>
+                 <textarea name="description" id="" placeholder="Description" class="form-control"></textarea>
+                </div>
+                <div class="col-12 mb-4">
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" name="iAgree" id="iAgree" required>
+                    <label class="form-check-label text-secondary" for="iAgree">
+                      I agree to the <a href="#!" class="link-primary text-decoration-none">terms and conditions</a>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="d-grid">
+                    <button class="btn btn-lg btn-primary" type="submit">Add Now</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+</body>
+</html>
+{%  endblock %}

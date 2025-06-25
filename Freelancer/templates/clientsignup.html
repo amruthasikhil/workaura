@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'usersignup/assets/img/apple-icon.png' %}">
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5339/5339159.png">
+  <title>
+    Workaura
+  </title>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=League+Spartan:wght@100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
+  <link href="https://demos.creative-tim.com/soft-ui-dashboard/assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="https://demos.creative-tim.com/soft-ui-dashboard/assets/css/nucleo-svg.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link id="pagestyle" href="{% static 'usersignup/assets/css/soft-ui-dashboard.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
+    <div class="container">
+      <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="">
+        <img src="{% static 'userhome/assets/img/finallogo.png' %}" alt="Apple Logo" class="img-fluid" style="width: 100%; max-width: 100px;">
+      </a>
+      <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon mt-2">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="navbar-nav mx-auto ms-xl-auto me-xl-7">
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center me-2 active" aria-current="page" href="">
+              <i class="fa fa-chart-pie opacity-6  me-1"></i>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link me-2" href="{% url 'freelancersignin' %}">
+              <i class="fas fa-key opacity-6  me-1"></i>
+              Sign In
+            </a>
+          </li>
+
+          <li class="nav-item d-flex align-items-center">
+            <button aria-disabled="true" class="btn btn-round btn-sm mb-0 btn-outline-white me-2"   aria-readonly="true" href="">I am a Client</button>
+          </li>
+          <ul class="navbar-nav d-lg-block d-none">
+            <li class="nav-item">
+              <a href="{% url 'freelancersignin' %}" class="btn btn-sm btn-round mb-0 me-1 bg-gradient-light">Looking for Client ?</a>
+            </li>
+          </ul>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content  mt-0">
+    <section class="min-vh-100 mb-8">
+      <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url(https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/iLdIHCXKdfvrmcLFUDcjk/61422c7beb6f5922a9c6f66a2d0797aa/GettyImages-1276389782.jpeg?w=1500&h=680&q=60&fit=fill&f=faces&fm=jpg&fl=progressive&auto=format%2Ccompress&dpr=1&w=1000);">
+        <span class="mask bg-gradient-dark opacity-6"></span>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-5 text-center mx-auto">
+              <h1 class="text-white mb-2 mt-5">Welcome!</h1>
+              <p class="text-lead text-white">Join our Freelancer Marketplace — Create an account or log in for free to connect, collaborate, and grow your career or business..</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row mt-lg-n10 mt-md-n11 mt-n10">
+          <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
+            <div class="card z-index-0">
+              <div class="card-header text-center pt-4">
+                <h5>Register with</h5>
+              </div>
+
+              <div class="card-body">
+                <form role="form text-left" method="POST" enctype="multipart/form-data" action="{% url 'clientsingup_post' %}">
+                  {%  csrf_token %}
+                  <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Full Name" name="full_name" aria-label="Full Name" >
+                  </div>
+                  <div class="mb-3">
+                    <input type="email" class="form-control" placeholder="Work Email Address" name="email_address" aria-label="Email Address" >
+                  </div>
+                
+                 
+                  <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Phone Number" name="phone_number" aria-label="Phone Number" >
+                  </div>
+                  <div class="mb-3">
+                    <div class="mb-3">
+                      <select name="company_type" class="form-control">
+                        <option value="" disabled selected>Select Company Type</option>
+                        <option value="IT">IT</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Retail">Retail</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>                  </div>
+                  <div class="mb-3">
+                    <textarea class="form-control" placeholder="Project Needs" name="project_needs" aria-label="Project Needs"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Company Website" name="company_website" aria-label="Company Website" >
+                  </div>
+                  <div class="mb-3">
+                    <label for="">Should be Add Your Business verification document *</label>
+                    <input type="file" required class="form-control" placeholder="Business Verification Document" name="business_verification_document" aria-label="Business Verification Document">
+                  </div>
+
+                  <div class="form-check form-check-info text-left">
+                    <input class="form-check-input" type="checkbox" name="terms_agreement" value="agreed" id="flexCheckDefault" checked>
+                    <label class="form-check-label" for="flexCheckDefault">
+                      I agree to the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
+                    </label>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>
+                  </div>
+                  <p class="text-sm mt-3 mb-0">Already have an account? <a href="" class="text-dark font-weight-bolder">Sign in</a></p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- -------- START FOOTER ------- -->
+  <footer class="footer py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mb-4 mx-auto text-center">
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">Company</a>
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">About Us</a>
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">Team</a>
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">Products</a>
+          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">Blog</a>
+          <a href="javascript:;" target="_blank" class="text-secondary

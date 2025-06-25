@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends "adminindex.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <table>
+                <tr>
+                    <form action="{% url 'viewsubcategory_searchpost' %}" method="post">
+                        {% csrf_token %}
+                    <td><input type="text" class="form-control" name="search" placeholder="Type Here" name="" id=""></td>
+                    <td><input type="submit" class="btn btn-primary" value="Search" name="" id=""></td>
+                    <td>
+                        <div class="d-flex align-items-center justify-content-end">
+
+                            <a   href="{% url 'addsubcategory' %}" class="btn btn-primary waves-effect waves-light mybutton hidden-md-down">Add New  Services</a>
+                
+                        </div>
+                    </td>
+                </form>
+                </tr>
+            </table>
+        </div>
+
+        
+        <h4 class="card-title">Basic Table</h4>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Category</th>
+                        <th>Sub Category</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i.catname}}</td>
+                        <td>{{i.subname}}</td>
+                        <td >
+                            <a href="" class="btn btn-warning">Edit</a>
+                            <a href="" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

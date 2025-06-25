@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends "adminindex.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <table>
+                <tr>
+                    <form action="{% url 'viewcategory_search' %}" method="post">
+                        {% csrf_token %}
+                    <td><input type="text" class="form-control" name="search" placeholder="Type Here" name="" id=""></td>
+                    <td><input type="submit" class="btn btn-primary" value="Search" name="" id=""></td>
+                    <td>
+                        <div class="d-flex align-items-center ms-auto"> 
+                            <a href="{% url 'addcategory' %}" class="btn waves-effect waves-light btn-success hidden-md-down">Add New Services</a>
+                        </div>
+                    </td>
+                </form>
+                </tr>
+            </table>
+        </div>
+       
+        
+        <h4 class="card-title mt-3">All Category </h4>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered" style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%  for i in categories %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i.category_name}}</td>
+                        <td>
+                            <a href="" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

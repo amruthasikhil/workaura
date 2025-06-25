@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends "adminindex.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+       
+        <div class="card-body">
+            <h4 class="card-title">Add Sub Category</h4>
+           
+            <form class="forms-sample" action="{%  url 'addsubcategory_post' %}" method="post">
+                {%  csrf_token %}
+              <div class="form-group">
+                <label for="exampleSelectGender">Category</label>
+                  <select class="form-control" name="category_id" id="exampleSelectGender">
+                    {% for i in data %}
+                    <option value="{{i.id}}">{{i.category_name}}</option>
+                    {%  endfor %}
+                  </select>
+                </div>
+
+              <div class="form-group">
+                <label for="exampleInputName1">Sub Category</label>
+                <input type="text" name="subcategory_name" class="form-control" id="exampleInputName1" placeholder="Name">
+              </div>
+             
+             
+             
+             
+              
+              <button type="submit" class="btn btn-primary mr-2">Submit</button>
+              <button class="btn btn-light">Cancel</button>
+            </form>
+          </div>
+    </div>
+</body>
+</html>
+{% endblock %}

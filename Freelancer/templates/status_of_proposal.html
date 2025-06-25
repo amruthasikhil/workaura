@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% extends "userdashboard.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="card-block">
+        <div class="row">
+            {% for i in data %}
+            <div class="col-lg-4 ">
+                <div class="card card-margin">
+                    <div class="card-header no-border mt-3">
+                        {% if i.status == "pending" %}
+                            <h6 class="card-title px-3 py-2" style="color: black; background-color: yellow; display: inline; border-radius: 5px;">Proposal sent, waiting for client response</h6>
+                        {% elif i.status == "Shortlisted" %}
+                            <h6 class="card-title px-3 py-2" style="color: black; background-color: orange; display: inline; border-radius: 5px;">Client has shortlisted the freelancer but hasn’t confirmed</h6>
+                        {% elif i.status == "Accepted" %}
+                            <h6 class="card-title px-3 py-2" style="color: white; background-color: green; display: inline; border-radius: 5px;">Client approved the proposal</h6>
+                        {% elif i.status == "Rejected" %}
+                            <h6 class="card-title px-3 py-2" style="color: white; background-color: red; display: inline; border-radius: 5px;">Client declined the proposal</h6>
+                        {% elif i.status == "Under Review" %}
+                            <h6 class="card-title px-3 py-2" style="color: white; background-color: blue; display: inline; border-radius: 5px;">Client is currently reviewing the proposal</h6>
+                        {% else %}
+                            <h6 class="card-title px-3 py-2" style="color: white; background-color: gray; display: inline; border-radius: 5px;">{{ i.status }}</h6>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="card-body pt-0">
+                        <div class="widget-49 px-3 py-3">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Submitted Date:</b></td>
+                                        <td>{{ i.submitted_at }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Project:</b></td>
+                                        <td>{{ i.project }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><b>Coverletter :</b></td>
+                                        <td>{{ i.cover_letter|truncatewords:5 }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><b>Offered Price:</b></td>
+                                        <td>{{ i.proposed_budget }}</td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td><b>Estimated Completion Time:</b></td>
+                                        <td>{{ i.estimated_time }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-start mt-2">
+                                <div class="mb-3">   
+                                  <a href="#"  class="px-3 py-1 mb-2" style="background-color: aliceblue;">View Proposal deatails</a> <br>
+                                </div>
+
+                                <div class="mb-3">   
+                                    <a href="#" class="px-3 py-1 mb-2" style="background-color: aliceblue;" >View Project deatails</a> <br>
+
+                                </div>
+
+                                <div>
+                                    <a href="#" class="px-3 py-1" style="border: 1px solid rgb(250, 248, 248);border-radius: 2px;" >Withdraw Now</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    
+
+</body>
+</html>
+{% endblock %}

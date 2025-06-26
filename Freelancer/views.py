@@ -88,7 +88,8 @@ def Freelancersigninpost(request):
                     return redirect(Profilesettingpage)
         elif obj.usertype == "client":
             request.session['lid']=obj.id
-            return render(request,"clientdashboard.html")
+            clientobj=ClientDb.objects.get(login=obj.id)
+            return render(request,"client_userhome.html",{"name":clientobj.full_name,"img":clientobj.business_verification_document})
         else:
                 return redirect(Freelancersignin)
     else:
@@ -688,3 +689,8 @@ def freelancerdashboard(request):
     }
 
     return render(request,"freelancer_dashboard.html",context)
+
+
+#=========26/05
+def clienthome(request):
+    return render(request,"client_userhome.html")

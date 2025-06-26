@@ -39,7 +39,7 @@ urlpatterns=[
 
     
     
-    
+    path('clienthome',views.clienthome,name="clienthome"),
     
     
      path('freelancer_view_newprojects',views.freelancer_view_newprojects,name="freelancer_view_newprojects"),

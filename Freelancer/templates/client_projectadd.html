@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% extends "clientdashboard.html" %}
+{% extends "client_userhome.html" %}
 {% block content %}
 <html lang="en">
 <head>
@@ -8,69 +8,73 @@
     <title>Document</title>
 </head>
 <body>
+ <div class="card-body">
+  <h4 class="card-title">Client Project Form</h4>
+  <p class="card-description">Submit your project details</p>
+
   <form action="{% url 'clientproject_post' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
- 
-  <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-    <label class="block text-sm">
-        <span class="text-gray-700 dark:text-gray-400">Project Title</span>
-        <input type="text" name="title" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Enter project title">
-    </label>
 
-    <label class="block mt-4 text-sm">
-        <span class="text-gray-700 dark:text-gray-400">Description</span>
-        <textarea name="description" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" rows="3" placeholder="Describe your project"></textarea>
-    </label>
+    <div class="form-group">
+      <label for="title">Project Title</label>
+      <input type="text" class="form-control" name="title" id="title" placeholder="Enter project title">
+    </div>
 
-    <label class="block mt-4 text-sm">
-        <span class="text-gray-700 dark:text-gray-400">Budget Type</span>
-        <select name="budget_type" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-            <option value="fixed">Fixed</option>
-            <option value="hourly">Hourly</option>
-        </select>
-    </label>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" name="description" id="description" rows="3" placeholder="Describe your project"></textarea>
+    </div>
 
-    <label class="block mt-4 text-sm">
-        <span class="text-gray-700 dark:text-gray-400">Budget Amount</span>
-        <input type="number" name="budget_amount" step="0.01" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Enter budget amount">
-    </label>
-
-    <label class="block text-sm">
-      <span class="text-gray-700 dark:text-gray-400">Category</span>
-      <select name="category" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-select">
-       {% for i in services %}
-        <option value="{{i.id}}">{{i.subcategory_name}}</option>
-        {%  endfor %}
+    <div class="form-group">
+      <label for="budget_type">Budget Type</label>
+      <select class="form-control" name="budget_type" id="budget_type">
+        <option value="fixed">Fixed</option>
+        <option value="hourly">Hourly</option>
       </select>
-    </label>
-    
+    </div>
 
-    <label class="block mt-4 text-sm">
-        <span class="text-gray-700 dark:text-gray-400">Required Skills</span>
-        <input type="text" name="required_skills" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Enter required skills">
-    </label>
+    <div class="form-group">
+      <label for="budget_amount">Budget Amount</label>
+      <input type="number" step="0.01" class="form-control" name="budget_amount" id="budget_amount" placeholder="Enter budget amount">
+    </div>
 
-    <label class="block mt-4 text-sm">
-        <span class="text-gray-700 dark:text-gray-400">Deadline</span>
-        <input type="date" name="deadline" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-    </label>
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select class="form-control" name="category" id="category">
+        {% for i in services %}
+          <option value="{{ i.id }}">{{ i.subcategory_name }}</option>
+        {% endfor %}
+      </select>
+    </div>
 
-    <label class="block mt-4 text-sm">
-        <span class="text-gray-700 dark:text-gray-400">Attachments</span>
-        <input type="file" name="attachments" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input">
-    </label>
+    <div class="form-group">
+      <label for="required_skills">Required Skills</label>
+      <input type="text" class="form-control" name="required_skills" id="required_skills" placeholder="Enter required skills">
+    </div>
 
-    <label class="block mt-4 text-sm">
-        <span class="text-gray-700 dark:text-gray-400">Visibility</span>
-        <select name="visibility" class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
-            <option value="public">Public</option>
-            <option value="private">Private</option>
-        </select>
-    </label>
+    <div class="form-group">
+      <label for="deadline">Deadline</label>
+      <input type="date" class="form-control" name="deadline" id="deadline">
+    </div>
 
-    <button class="w-full px-4 py-2 mt-4 text-white bg-purple-600 rounded-md hover:bg-purple-700 focus:outline-none focus:bg-purple-700">Submit</button>
+    <div class="form-group">
+      <label for="attachments">Attachments</label>
+      <input type="file" class="form-control" name="attachments" id="attachments">
+    </div>
+
+    <div class="form-group">
+      <label for="visibility">Visibility</label>
+      <select class="form-control" name="visibility" id="visibility">
+        <option value="public">Public</option>
+        <option value="private">Private</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+    <button type="reset" class="btn btn-light">Cancel</button>
+  </form>
 </div>
-</form>
+
 
 </body>
 </html>

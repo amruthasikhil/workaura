@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% extends "client_userhome.html" %}
+{% block content %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee List</title>
+  <style>
+    .employee-card {
+     
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: 0.3s;
+    }
+    .employee-card:hover {
+      box-shadow: 0 0 25px rgba(0,0,0,0.15);
+    }
+    .employee-img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      border: 2px solid #fff;
+    }
+    .status-online { background-color: green; }
+    .status-offline { background-color: red; }
+  </style>
+</head>
+<body class="bg-light">
+
+  <div class="container py-2">
+   
+      <h4 class="fw-regular mb-3">Currently we have {{tot}} Freelancers</h3>
+
+
+
+        {% for i in data %}
+     <div class="col-md-6 col-lg-4">
+        <div class="d-flex justify-content-center">
+            <div class="row">
+      <!-- Employee Card Start -->
+     
+        <div class="employee-card bg-white">
+          <div class="d-flex align-items-center mb-3 position-relative">
+            <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="Profile" class="employee-img me-3">
+            <div class="status-dot status-online position-absolute"></div>
+            <div>
+              <h6 class="mb-0">{{i.full_name}}</h6>
+              <small class="text-muted">Project Manager</small>
+            </div>
+          </div>
+          <p><strong>Department:</strong> Design Team</p>
+          <p><strong>Hired Date:</strong> 7/27/13</p>
+          <p class="mb-1"><i class="bi bi-envelope"></i> Ronald043@gmail.com</p>
+          <p><i class="bi bi-telephone"></i> (229) 555-0109</p>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    {% endfor %}
+
+
+
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+</body>
+</html>
+{% endblock %}

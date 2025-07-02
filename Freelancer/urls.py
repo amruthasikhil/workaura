@@ -40,6 +40,8 @@ urlpatterns=[
     
     
     path('clienthome',views.clienthome,name="clienthome"),
+
+     path('clientviewfreelancers',views.clientviewfreelancers,name="clientviewfreelancers"),
     
     
      path('freelancer_view_newprojects',views.freelancer_view_newprojects,name="freelancer_view_newprojects"),

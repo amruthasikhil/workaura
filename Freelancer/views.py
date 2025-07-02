@@ -694,3 +694,9 @@ def freelancerdashboard(request):
 #=========26/05
 def clienthome(request):
     return render(request,"client_userhome.html")
+
+
+def clientviewfreelancers(request):
+    obj=FreelancerDb.objects.all()
+    coun=obj.count()
+    return render(request,"clientviewfreelancers.html",{"data":obj,"tot":coun})

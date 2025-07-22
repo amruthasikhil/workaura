@@ -1,0 +1,57 @@
+<!-- templates/add_service.html -->
+<!DOCTYPE html>
+{% extends "userdashboard.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Service</title>
+    <!-- Optional: Add CSS or Bootstrap for styling -->
+</head>
+<body>
+    <div class="container">
+     <!-- Registration 2 - Bootstrap Brain Component -->
+
+    
+        <div class="col-12 col-md-11 col-lg-12 col-xl-12 col-xxl-12">
+        
+            <div class="row">
+              <div class="col-12">
+                <div class="mb-3">
+                  <h2 class="h5">Add your skills</h2>
+                  <h6 class="fs-6 fw-normal text-secondary m-0">Add Your skills Below</h3>
+                </div>
+              </div>
+            </div>
+            <form action="{% url 'freelancersprofilemore_post' %}" method="POST">
+              {% csrf_token %}
+              <div class="row gy-3 gy-md-4 overflow-hidden">
+                <div class="col-12 mb-2">
+                  <label for="firstName" class="form-label">What i do <span class="text-danger">*</span></label>
+                  <textarea   class="form-control" name="whatido"></textarea>
+                </div>
+
+                 <div class="col-12 mb-2">
+                  <label for="firstName" class="form-label">Why choose me <span class="text-danger">*</span></label>
+                  <textarea   class="form-control" name="whatichoose" ></textarea>
+                </div>
+               
+                <div class="col-12">
+                  <div class="d-grid ">
+                    <button class="btn btn-md btn-primary" type="submit">Add Now</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+</body>
+</html>
+{%  endblock %}

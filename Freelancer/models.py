@@ -65,7 +65,26 @@ class ProjectPostDb(models.Model):
     attachments = models.FileField(upload_to='project_files', null=True, blank=True) 
     visibility = models.CharField(max_length=10, default='public')  
     client_id = models.IntegerField(null=True, blank=True)  
-    created_at = models.DateField(auto_now_add=True) 
+    created_at = models.DateField(auto_now_add=True)
+
+
+class ProfileEntry(models.Model):
+    freelancer=models.IntegerField(null=True,blank=True)
+    what_i_do=models.CharField(max_length=500)
+    why_i_choose = models.CharField(max_length=500)
+
+
+
+class PortfolioProject(models.Model):
+    freelancer = models.IntegerField(null=True,blank=True)
+    project_name = models.CharField(max_length=100)
+    tools_used = models.CharField(max_length=255)
+    description = models.TextField()
+    project_link = models.URLField(blank=True, null=True)
+    image = models.FileField(upload_to='portfolio', blank=True, null=True)
+
+    
+
 
 class ProjectLikeDb(models.Model):
     pid = models.IntegerField(null=True, blank=True)  

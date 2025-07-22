@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% extends "userdashboard.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+       
+        <div class="d-flex align-items-center justify-content-end">
+
+        </div>
+        <h4 class="card-title">Offering Services</h4>
+
+        <div class=" table-responsive">
+            <table class="table table-bordered table-hover ">
+                <thead style="background-color: rgb(235, 234, 234);">
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in mydata %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td style="width: 150px;">{{i.title}}</td>
+                        <td style="width: 250px; word-break: break-word; overflow-wrap: break-word; white-space: normal;">{{ i.description }}</td>
+                        <td><b>€</b> {{i.price}}</td>
+                        <td>{{i.category}}</td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

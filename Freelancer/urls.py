@@ -37,11 +37,19 @@ urlpatterns=[
 
              path('freelancerdashboard',views.freelancerdashboard,name="freelancerdashboard"),
 
+             path('freelancerprofilemore',views.freelancerprofilemore,name="freelancerprofilemore"),
+
+                path('freelancersprofilemore_post',views.freelancersprofilemore_post,name="freelancersprofilemore_post"),
+
+                path('freelancer_portfolio_project',views.freelancer_portfolio_project,name="freelancer_portfolio_project"),
+
     
     
     path('clienthome',views.clienthome,name="clienthome"),
 
      path('clientviewfreelancers',views.clientviewfreelancers,name="clientviewfreelancers"),
+
+          path('clientviewfreelancer_more/<int:fid>',views.clientviewfreelancer_more,name="clientviewfreelancer_more"),
     
     
      path('freelancer_view_newprojects',views.freelancer_view_newprojects,name="freelancer_view_newprojects"),

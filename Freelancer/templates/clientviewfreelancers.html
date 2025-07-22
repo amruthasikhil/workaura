@@ -8,7 +8,6 @@
   <title>Employee List</title>
   <style>
     .employee-card {
-     
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
       padding: 20px;
       transition: 0.3s;
@@ -25,7 +24,6 @@
     .status-dot {
       width: 12px;
       height: 12px;
-      border-radius: 50%;
       position: absolute;
       bottom: 5px;
       right: 5px;
@@ -37,37 +35,47 @@
 </head>
 <body class="bg-light">
 
-  <div class="container py-2">
+  <div class="container">
    
       <h4 class="fw-regular mb-3">Currently we have {{tot}} Freelancers</h3>
 
 
 
-        {% for i in data %}
-     <div class="col-md-6 col-lg-4">
-        <div class="d-flex justify-content-center">
-            <div class="row">
-      <!-- Employee Card Start -->
-     
-        <div class="employee-card bg-white">
-          <div class="d-flex align-items-center mb-3 position-relative">
-            <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="Profile" class="employee-img me-3">
-            <div class="status-dot status-online position-absolute"></div>
+       <div class="row">
+  {% for i in data %}
+    <div class="col-md-12 col-lg-4 mb-4  py-2 px-3" style="border: 1px solid rgb(249, 248, 248);">
+      <div class="employee-card bg-white p-3 shadow-sm"  style="box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;">
+        <div class="d-flex align-items-center mb-3">
+                      <img src="{{i.id_proof.url}}" alt="Profile" class="employee-img me-3" style="width:60px; height:60px; ">
+          <div class="mx-2 d-flex justify-content-between align-items-center">
             <div>
-              <h6 class="mb-0">{{i.full_name}}</h6>
-              <small class="text-muted">Project Manager</small>
+                 <h6 class="mb-0">{{ i.full_name }}</h6>
+            <small class="text-muted">{{i.skills_expertise}}</small>
             </div>
+            <div>
+
+            </div>
+           
+                                  
+
           </div>
-          <p><strong>Department:</strong> Design Team</p>
-          <p><strong>Hired Date:</strong> 7/27/13</p>
-          <p class="mb-1"><i class="bi bi-envelope"></i> Ronald043@gmail.com</p>
-          <p><i class="bi bi-telephone"></i> (229) 555-0109</p>
         </div>
+        <p><strong>Department:</strong> Design Team</p>
+        <p><strong>Hired Date:</strong> 7/27/13</p>
+        <p class="mb-1"><i class="bi bi-envelope"></i> Ronald043@gmail.com</p>
+        <p><i class="bi bi-telephone"></i> (229) 555-0109</p>
+        <div class="mt-3">
+                <a href=""   style="background-color: aliceblue;border-radius: 50%;text-decoration: none;" class="fs-1"><i class="bi bi-chat mx-2"></i>Contact Now</a>
+                <a href="{% url 'clientviewfreelancer_more' fid=i.id %}"  style="background-color: aliceblue;border-radius: 50%;text-decoration: none;color: black;" class="fs-1 mx-2">View More</a>
+
+        </div>
+        
+
       </div>
     </div>
-    </div>
+  {% endfor %}
+</div>
 
-    {% endfor %}
 
 
 

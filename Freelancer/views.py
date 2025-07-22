@@ -690,6 +690,52 @@ def freelancerdashboard(request):
 
     return render(request,"freelancer_dashboard.html",context)
 
+def freelancerprofilemore(request):
+         lid=request.session.get("lid")
+         obj=FreelancerDb.objects.get(login=lid)
+         return render(request,"freelancerprofile_more.html",{ "name":obj.full_name,
+        "imge":obj.id_proof,})
+
+
+
+def freelancersprofilemore_post(request):
+    lid=request.session.get("lid")
+    obj=FreelancerDb.objects.get(login=lid)
+    if request.method == "POST":
+           fid=request.session.get("lid")
+           what_i_do=request.POST.get("whatido")
+           why_choose_i=request.POST.get("whatichoose")
+           Proobj=ProfileEntry(freelancer=fid,
+                               what_i_do=what_i_do,
+                               why_i_choose=why_choose_i)
+           Proobj.save()
+           return render(request,"freelancer_add_portfolio.html",{ "name":obj.full_name,
+        "imge":obj.id_proof,})
+    
+
+
+def freelancer_portfolio_project(request):
+    if request.method == "POST":
+        freelancer=request.session.get("lid")
+        project_name=request.POST.get("project_name")
+        tools_used=request.POST.get("tools")
+        description=request.POST.get("description")
+        project_link=request.POST.get("link")
+        image=request.FILES["imgg"]
+        obj=PortfolioProject(
+            project_name=project_name,
+            tools_used=tools_used,
+            description=description,
+            project_link=project_link,
+            image=image,
+            freelancer=freelancer
+        )
+        obj.save()
+        return redirect(Freelancer_profile)
+
+
+
+
 
 #=========26/05
 def clienthome(request):
@@ -697,6 +743,32 @@ def clienthome(request):
 
 
 def clientviewfreelancers(request):
-    obj=FreelancerDb.objects.all()
+    obj=FreelancerDb.objects.filter()
     coun=obj.count()
-    return render(request,"clientviewfreelancers.html",{"data":obj,"tot":coun})
+    lid=request.session.get('lid')
+    clientobj=ClientDb.objects.get(login=lid)
+    return render(request,"clientviewfreelancers.html",{"data":obj,"tot":coun,"name":clientobj.full_name,"img":clientobj.business_verification_document})
+
+def clientviewfreelancer_more(request,fid):
+    data=FreelancerDb.objects.get(id=fid)
+    try:
+        data2 = FreelancerprofileDb.objects.get(lid=data.login)
+    except FreelancerprofileDb.DoesNotExist:
+        data2 = None  # Or some default/fallback value
+
+    try:
+        data3=ProfileEntry.objects.get(freelancer=data.login)
+    except ProfileEntry.DoesNotExist:
+        data3 = None
+
+    try:
+        data4 = PortfolioProject.objects.filter(freelancer=data.login)  
+    except PortfolioProject.DoesNotExist:
+        data4 = None
+
+    return render(request, "clientview_freelancerprofile.html", {
+        "data": data,
+        "data2": data2,
+        "data3":data3,
+        "data4":data4
+    })

@@ -103,6 +103,4 @@ python manage.py runserver
 
 -----
 
-With the Freelancer Marketplace documented, you now have strong materials for a **Flask project (ICDS)** and a **Django project (Marketplace)**.
 
-What is the next project we should document to continue building your portfolio materials?
